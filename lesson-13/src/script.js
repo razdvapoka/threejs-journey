@@ -25,8 +25,8 @@ const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load("/textures/matcaps/9.jpeg");
 
 const fontLoader = new THREE.FontLoader();
-fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
-  const textGeometry = new THREE.TextBufferGeometry(`DONUTS`, {
+fontLoader.load("/fonts/fragen_italic.typeface.json", (font) => {
+  const textGeometry = new THREE.TextBufferGeometry(`☟`, {
     font,
     size: 1,
     height: 0.2,
@@ -50,19 +50,19 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
   const text = new THREE.Mesh(textGeometry, material);
   scene.add(text);
 
-  const donutGeometry = new THREE.TorusBufferGeometry(0.3, 0.2, 20, 45);
+  // const donutGeometry = new THREE.TorusBufferGeometry(0.3, 0.2, 20, 45);
 
-  for (let i = 0; i < 300; i++) {
-    const donut = new THREE.Mesh(donutGeometry, material);
-    donut.position.x = (Math.random() - 0.5) * 10;
-    donut.position.y = (Math.random() - 0.5) * 10;
-    donut.position.z = (Math.random() - 0.5) * 10;
-    donut.rotation.x = Math.random() * Math.PI;
-    donut.rotation.y = Math.random() * Math.PI;
-    const scale = Math.random();
-    donut.scale.set(scale, scale, scale);
-    scene.add(donut);
-  }
+  // for (let i = 0; i < 300; i++) {
+  //   const donut = new THREE.Mesh(donutGeometry, material);
+  //   donut.position.x = (Math.random() - 0.5) * 10;
+  //   donut.position.y = (Math.random() - 0.5) * 10;
+  //   donut.position.z = (Math.random() - 0.5) * 10;
+  //   donut.rotation.x = Math.random() * Math.PI;
+  //   donut.rotation.y = Math.random() * Math.PI;
+  //   const scale = Math.random();
+  //   donut.scale.set(scale, scale, scale);
+  //   scene.add(donut);
+  // }
 });
 
 /**

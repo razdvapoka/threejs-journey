@@ -10,6 +10,7 @@ import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { SMAAPass } from "three/examples/jsm/postprocessing/SMAAPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { RGBShiftShader } from "three/examples/jsm/shaders/RGBShiftShader.js";
+import { KaleidoShader } from "three/examples/jsm/shaders/KaleidoShader.js";
 import * as dat from "dat.gui";
 
 /**
@@ -267,12 +268,17 @@ const DisplacementShader = {
   `,
 };
 const displacementPass = new ShaderPass(DisplacementShader);
-displacementPass.enabled = true;
+displacementPass.enabled = false;
 // displacementPass.material.uniforms.uTime.value = 0;
 displacementPass.material.uniforms.uNormalMap.value = textureLoader.load(
   "/textures/interfaceNormalMap.png"
 );
 effectComposer.addPass(displacementPass);
+
+const kaleidoPass = new ShaderPass(KaleidoShader);
+kaleidoPass.enabled = true;
+// displacementPass.material.uniforms.uTime.value = 0;
+effectComposer.addPass(kaleidoPass);
 
 gui.add(tintPass.material.uniforms.uTint.value, "x", -1, 1, 0.001).name("red");
 gui
@@ -308,4 +314,3 @@ const tick = () => {
 };
 
 tick();
-
